@@ -177,24 +177,25 @@ while True:
         flag = 1
         cleverButton.draw()
         stupidButton.draw()
-    if counter % 2:
-        if play_with_clever:
-            fc = free_cell(field)
-            b = []
-            for i in range(len(fc)):
-                nb = balanse(fc[i], 2, field)
-                b.append(nb)
-            m = -5
-            idd = 0
-            for i in range(len(b)):
-                if b[i] > m:
-                    m = b[i]
-                    idd = fc[i]
-            field[idd] = 2
-            counter += 1
-        if play_with_stupid:
-            fc = free_cell(field)
-            idd = random.randint(0, len(fc) - 1)
-            field[fc[idd]] = 2
-            counter += 1
+    if not flag:
+        if counter % 2:
+            if play_with_clever:
+                fc = free_cell(field)
+                b = []
+                for i in range(len(fc)):
+                    nb = balanse(fc[i], 2, field)
+                    b.append(nb)
+                m = -5
+                idd = 0
+                for i in range(len(b)):
+                    if b[i] > m:
+                        m = b[i]
+                        idd = fc[i]
+                field[idd] = 2
+                counter += 1
+            if play_with_stupid:
+                fc = free_cell(field)
+                idd = random.randint(0, len(fc) - 1)
+                field[fc[idd]] = 2
+                counter += 1
     pygame.display.update()
